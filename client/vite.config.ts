@@ -12,4 +12,8 @@ export default defineConfig({
       },
     },
   },
+  define: {
+    // Expose env var to client bundle
+    'import.meta.env.VITE_API_BASE_URL': JSON.stringify(process.env.VITE_API_BASE_URL ?? ''),
+  },
 });

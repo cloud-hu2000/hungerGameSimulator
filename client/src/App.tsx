@@ -5,6 +5,8 @@ import type {
   PronounType,
 } from './types';
 
+const API_BASE_URL = (import.meta as { env?: { VITE_API_BASE_URL?: string } }).env?.VITE_API_BASE_URL ?? '';
+
 // ─────────────────────────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────────────────────────
@@ -537,7 +539,7 @@ export default function App() {
     setError(null);
 
     try {
-      const res = await fetch('/api/simulate', {
+      const res = await fetch(`${API_BASE_URL}/api/simulate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tributes, relationships, settings }),
