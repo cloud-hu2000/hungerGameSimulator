@@ -3,10 +3,16 @@
   "builds": [
     {
       "src": "dist/api/**/*.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node@3"
     }
   ],
   "buildCommand": "npm run build",
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/dist/api/$1.js"
+    }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
