@@ -2,15 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/api/**/*.js",
+      "src": "api/**/*.ts",
       "use": "@vercel/node@3"
-    }
-  ],
-  "buildCommand": "npm run build",
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/dist/api/$1.js"
     }
   ],
   "headers": [
