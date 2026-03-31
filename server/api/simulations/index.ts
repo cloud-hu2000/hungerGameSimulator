@@ -1,6 +1,17 @@
 import { listSimulations, countSimulations } from '../../lib/db.js';
 
 export default async function handler(req: Request) {
+  if (req.method === 'OPTIONS') {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+    });
+  }
+
   const url = new URL(req.url);
   const limit  = Math.min(parseInt(String(url.searchParams.get('limit')  ?? '20')), 100);
   const offset = Math.max(parseInt(String(url.searchParams.get('offset') ?? '0')),   0);
