@@ -1,12 +1,18 @@
 {
   "version": 2,
-  "functions": {
-    "api/health.js": { "runtime": "@vercel/node@3" },
-    "api/simulate.js": { "runtime": "@vercel/node@3" },
-    "api/simulations/index.js": { "runtime": "@vercel/node@3" },
-    "api/simulations/[id].js": { "runtime": "@vercel/node@3" },
-    "api/events/stats.js": { "runtime": "@vercel/node@3" }
-  },
+  "builds": [
+    {
+      "src": "src/api/**/*.ts",
+      "use": "@vercel/node@3"
+    }
+  ],
+  "routes": [
+    { "src": "/api/health", "dest": "/src/api/health.js" },
+    { "src": "/api/simulate", "dest": "/src/api/simulate.js" },
+    { "src": "/api/simulations", "dest": "/src/api/simulations/index.js" },
+    { "src": "/api/simulations/(?<id>[^/]+)", "dest": "/src/api/simulations/[id].js" },
+    { "src": "/api/events/stats", "dest": "/src/api/events/stats.js" }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
