@@ -3,12 +3,9 @@
   "builds": [
     {
       "src": "api/**/*.ts",
-      "use": "@vercel/node@3"
+      "use": "@vercel/node"
     }
   ],
-  "config": {
-    "nodeVersion": "22"
-  },
   "headers": [
     {
       "source": "/api/(.*)",
