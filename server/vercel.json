@@ -2,10 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/**/*.ts",
+      "src": "dist/api/**/*.js",
       "use": "@vercel/node"
     }
   ],
+  "buildCommand": "npm run build",
   "headers": [
     {
       "source": "/api/(.*)",
