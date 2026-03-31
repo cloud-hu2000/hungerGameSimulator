@@ -10,8 +10,9 @@ export default async function handler(req: Request) {
       status: 204,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
       },
     });
   }
@@ -25,6 +26,9 @@ export default async function handler(req: Request) {
           'Content-Type': 'application/json',
           'Allow': 'POST',
           'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
         },
       },
     );
@@ -38,7 +42,11 @@ export default async function handler(req: Request) {
       JSON.stringify({ success: false, error: 'Invalid JSON body.' }),
       {
         status: 400,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+        },
       },
     );
   }
@@ -48,7 +56,11 @@ export default async function handler(req: Request) {
       JSON.stringify({ success: false, error: 'At least 2 tributes are required.' }),
       {
         status: 400,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+        },
       },
     );
   }
@@ -57,7 +69,11 @@ export default async function handler(req: Request) {
       JSON.stringify({ success: false, error: 'Maximum 48 tributes allowed.' }),
       {
         status: 400,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+        },
       },
     );
   }
@@ -67,7 +83,11 @@ export default async function handler(req: Request) {
         JSON.stringify({ success: false, error: `Tribute ${i + 1} is missing a name.` }),
         {
           status: 400,
-          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': 'true',
+          },
         },
       );
     }
@@ -133,7 +153,11 @@ export default async function handler(req: Request) {
       JSON.stringify({ success: true, data: result }),
       {
         status: 200,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+        },
       },
     );
   } catch (err) {
@@ -142,7 +166,11 @@ export default async function handler(req: Request) {
       JSON.stringify({ success: false, error: 'Simulation failed. Please try again.' }),
       {
         status: 500,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+        },
       },
     );
   }
