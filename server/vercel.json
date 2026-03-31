@@ -1,32 +1,27 @@
 {
   "version": 2,
-  "installCommand": "npm install",
+  "buildCommand": "npm run build",
   "builds": [
     {
-      "src": "api/**/*.ts",
+      "src": "dist/api/**/*.js",
       "use": "@vercel/node@3"
     }
+  ],
+  "routes": [
+    { "src": "/api/health", "dest": "/dist/api/health.js" },
+    { "src": "/api/simulate", "dest": "/dist/api/simulate.js" },
+    { "src": "/api/simulations", "dest": "/dist/api/simulations/index.js" },
+    { "src": "/api/simulations/(.*)", "dest": "/dist/api/simulations/$1.js" },
+    { "src": "/api/events/stats", "dest": "/dist/api/events/stats.js" }
   ],
   "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
-        {
-          "key": "Access-Control-Allow-Credentials",
-          "value": "true"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization, X-Requested-With"
-        }
+        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, PUT, DELETE, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization, X-Requested-With" }
       ]
     }
   ]
