@@ -6,6 +6,9 @@
       "use": "@vercel/node@3"
     }
   ],
+  "config": {
+    "nodeVersion": "22"
+  },
   "headers": [
     {
       "source": "/api/(.*)",
