@@ -1,16 +1,11 @@
 {
-  "name": "hunter-game-simulator",
+  "name": "hunger-game-simulator",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "client",
-    "server"
+    "client"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
-    "build": "npm run build --workspace=client && npm run build --workspace=server"
-  },
-  "devDependencies": {
-    "concurrently": "^9.1.0"
+    "dev": "npm run dev --workspace=client"
   }
 }

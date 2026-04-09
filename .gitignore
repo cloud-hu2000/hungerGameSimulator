@@ -1,8 +1,10 @@
 node_modules/
 dist/
 .env
+.env.example
 *.db
 *.db-shm
 *.db-wal
 .DS_Store
 *.log
+tsconfig.tsbuildinfo
